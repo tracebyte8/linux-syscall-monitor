@@ -11,14 +11,13 @@ OBJS = \
 	memory_monitor.o \
 	network_monitor.o \
 	fd_tables.o \
-	report.o 
+	report.o
+all: linux_syscall_monitor basic_target
 
-all: sandbox target nettarget multitarget
+linux_syscall_monitor: $(OBJS)
+	$(CC) $(CFLAGS) -o linux_syscall_monitor $(OBJS)
 
-sandbox: $(OBJS)
-	$(CC) $(CFLAGS) -o sandbox $(OBJS)
-
-target: basic_target.c
+basic_target: basic_target.c
 	$(CC) $(CFLAGS) -o basic_target basic_target.c
 
 main.o: main.c
@@ -52,4 +51,4 @@ report.o: report.c
 	$(CC) $(CFLAGS) -c report.c
 
 clean:
-	rm -f *.o sandbox target nettarget multitarget
+	rm -f *.o linux_syscall_monitor basic_target report.html
