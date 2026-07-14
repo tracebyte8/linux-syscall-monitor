@@ -80,7 +80,7 @@ Then build and run:
 
 ```bash
 make
-./linux_syscall_monitor```
+./linux_syscall_monitor
 
 The generated report will be saved as:
 
