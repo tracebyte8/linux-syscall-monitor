@@ -1,0 +1,11 @@
+#ifndef PROCESS_MONITOR_H
+#define PROCESS_MONITOR_H
+
+#include <sys/types.h>
+#include <sys/user.h>
+
+void handle_process_syscall(pid_t pid,
+                            struct user_regs_struct *regs,
+                           int entering);
+
+#endif
