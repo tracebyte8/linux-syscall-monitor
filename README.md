@@ -11,7 +11,7 @@
 
 </p>
 
-A lightweight **Linux system monitoring tool** written in C.
+A lightweight Linux system call monitoring tool written in C using the Linux ptrace API. It traces a target process, monitors selected system calls, and generates a structured HTML report.
 
 The project uses the Linux **ptrace** interface to trace a target process and monitor its system calls in real time. It generates an HTML report describing the observed activity.
 
@@ -80,8 +80,7 @@ Then build and run:
 
 ```bash
 make
-./sandbox
-```
+./linux_syscall_monitor```
 
 The generated report will be saved as:
 
