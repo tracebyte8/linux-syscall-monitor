@@ -1,5 +1,4 @@
-# linux-syscall-monitor
-
+# Linux System Call Monitor
 
 <p align="center">
 
@@ -11,40 +10,43 @@
 
 </p>
 
-A lightweight Linux system call monitoring tool written in C using the Linux ptrace API. It traces a target process, monitors selected system calls, and generates a structured HTML report.
+A lightweight **Linux system call monitoring tool** written in **C** using the Linux **ptrace** API.
 
-The project uses the Linux **ptrace** interface to trace a target process and monitor its system calls in real time. It generates an HTML report describing the observed activity.
+The monitor traces a target process, captures selected system calls, and generates a structured HTML report summarizing process, file, memory, and network activity.
 
 ---
 
 ## Features
 
-- Process monitoring
-  - `fork`
-  - `execve`
-  - `wait`
+### Process Monitoring
+- `fork`
+- `execve`
+- `wait`
 
-- File monitoring
-  - `open/openat`
-  - `read`
-  - `close`
+### File Monitoring
+- `open`
+- `openat`
+- `read`
+- `close`
 
-- Memory monitoring
-  - `mmap`
-  - `mprotect`
-  - `munmap`
+### Memory Monitoring
+- `mmap`
+- `mprotect`
+- `munmap`
 
-- Network monitoring
-  - `socket`
-  - `connect`
-  - `bind`
-  - `listen`
-  - `accept`
-  - `send`
-  - `recv`
+### Network Monitoring
+- `socket`
+- `connect`
+- `bind`
+- `listen`
+- `accept`
+- `send`
+- `recv`
 
+### Reporting
 - HTML report generation
-- CSS styled report
+- CSS-styled report
+- Organized monitor sections
 
 ---
 
@@ -66,7 +68,7 @@ make
 
 ## Usage
 
-Replace the program path inside `main.c` with the executable you want to monitor.
+Specify the executable you want to monitor inside `main.c`.
 
 Example:
 
@@ -76,34 +78,42 @@ trace("./your_program");
 report_finish();
 ```
 
-Then build and run:
+Build and run:
 
 ```bash
 make
 ./linux_syscall_monitor
-
-The generated report will be saved as:
-
 ```
+
+After execution, the monitor generates:
+
+```text
 report.html
 ```
 
-Open it in your browser.
+Open the report in any web browser.
 
 ---
 
 ## Project Structure
 
-```
+```text
 .
 ├── main.c
 ├── tracer.c
+├── tracer.h
 ├── syscall.c
+├── syscall.h
 ├── process_monitor.c
+├── process_monitor.h
 ├── file_monitor.c
+├── file_monitor.h
 ├── memory_monitor.c
+├── memory_monitor.h
 ├── network_monitor.c
+├── network_monitor.h
 ├── fd_tables.c
+├── fd_tables.h
 ├── report.c
 ├── report.h
 ├── style.css
@@ -112,16 +122,29 @@ Open it in your browser.
 
 ---
 
-# Disclaimer
+## Future Work
 
-This project is intended for **educational and research purposes only**, demonstrating Linux process tracing and system call monitoring using the `ptrace` interface.
+- Support additional Linux system calls
+- Improve socket information decoding
+- Process tree visualization
+- JSON report generation
+- Syscall statistics
+- Configurable monitoring filters
 
-It is provided **"as is"**, without warranty of any kind. The author assumes **no responsibility or liability** for any damage, data loss, or legal consequences resulting from the use or misuse of this software.
+---
 
-Users are solely responsible for ensuring that their use of this project complies with applicable laws and regulations. Only monitor processes that you own or have explicit permission to inspect.
+## Disclaimer
+
+This project is intended for **educational and research purposes only**.
+
+It demonstrates Linux process tracing and system call monitoring using the **ptrace** interface.
+
+The software is provided **"as is"**, without warranty of any kind. The author assumes **no responsibility or liability** for any damage, data loss, or legal consequences resulting from the use or misuse of this project.
+
+Users are solely responsible for ensuring that their use complies with applicable laws and regulations. Only monitor processes that you own or have explicit permission to inspect.
 
 ---
 
 ## License
 
-MIT License
+This project is released under the **MIT License**.
