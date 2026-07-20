@@ -10,43 +10,41 @@
 
 </p>
 
-A lightweight **Linux system call monitoring tool** written in **C** using the Linux **ptrace** API.
+A lightweight **Linux system call monitor** written in **C** using the **ptrace** API.
 
-The monitor traces a target process, captures selected system calls, and generates a structured HTML report summarizing process, file, memory, and network activity.
+The tool traces a target process, monitors selected system calls, and generates an HTML report summarizing process, file, memory, and network activity.
 
 ---
 
 ## Features
 
 ### Process Monitoring
+
 - `fork`
 - `execve`
 - `wait`
 
 ### File Monitoring
+
 - `open`
 - `openat`
 - `read`
 - `close`
 
 ### Memory Monitoring
+
 - `mmap`
 - `mprotect`
 - `munmap`
 
 ### Network Monitoring
-- `socket`
-- `connect`
-- `bind`
-- `listen`
-- `accept`
-- `send`
-- `recv`
+
+- *(In progress)*
 
 ### Reporting
+
 - HTML report generation
-- CSS-styled report
-- Organized monitor sections
+- CSS-styled output
 
 ---
 
@@ -68,9 +66,7 @@ make
 
 ## Usage
 
-Specify the executable you want to monitor inside `main.c`.
-
-Example:
+Specify the target executable in `main.c`:
 
 ```c
 report_start("./your_program");
@@ -78,27 +74,25 @@ trace("./your_program");
 report_finish();
 ```
 
-Build and run:
+Compile and run:
 
 ```bash
 make
 ./linux_syscall_monitor
 ```
 
-After execution, the monitor generates:
+After execution, the generated report will be available as:
 
 ```text
 report.html
 ```
 
-Open the report in any web browser.
+Open it in any web browser.
 
 ---
 
 ## Project Structure
 
-```text
-.
 ├── main.c
 ├── tracer.c
 ├── tracer.h
@@ -120,31 +114,17 @@ Open the report in any web browser.
 └── Makefile
 ```
 
----
-
-## Future Work
-
-- Support additional Linux system calls
-- Improve socket information decoding
-- Process tree visualization
-- JSON report generation
-- Syscall statistics
-- Configurable monitoring filters
-
----
 
 ## Disclaimer
 
-This project is intended for **educational and research purposes only**.
+This project is intended for **educational and research purposes**.
 
 It demonstrates Linux process tracing and system call monitoring using the **ptrace** interface.
 
-The software is provided **"as is"**, without warranty of any kind. The author assumes **no responsibility or liability** for any damage, data loss, or legal consequences resulting from the use or misuse of this project.
-
-Users are solely responsible for ensuring that their use complies with applicable laws and regulations. Only monitor processes that you own or have explicit permission to inspect.
+Use this software only on processes that you own or are authorized to inspect. The author is not responsible for any misuse, data loss, or legal consequences resulting from its use.
 
 ---
 
 ## License
 
-This project is released under the **MIT License**.
+This project is licensed under the **MIT License**.
