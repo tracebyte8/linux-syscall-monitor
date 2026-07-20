@@ -116,18 +116,6 @@ Open it in any web browser.
 └── Makefile
 ```
 
----
-
-## Roadmap
-
-- Add support for additional Linux system calls
-- Improve socket and network event decoding
-- Process tree visualization
-- JSON report export
-- System call statistics
-- Configurable monitoring filters
-
----
 
 ## Disclaimer
 
